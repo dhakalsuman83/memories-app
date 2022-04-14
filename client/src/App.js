@@ -1,12 +1,17 @@
 import React from "react";
-
-import memories from "./images/memories.png";
+import Header from "./components/Header/Header";
+import Posts from "./components/Posts/Posts";
+import Form from "./components/Form/Form";
+import "./App.css";
 
 const App = () => {
   return (
-    <div>
-      <h1>Memories</h1>
-      <img src={memories} alt="" />
+    <div className="container">
+      <Header />
+      <div className="app-body">
+        <Posts />
+        <Form />
+      </div>
     </div>
   );
 };
