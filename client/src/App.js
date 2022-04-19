@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+import { getPosts } from "./Actions/Posts";
 import Header from "./components/Header/Header";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
-import { getPosts } from "./actions/posts";
 import "./App.css";
 
 const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
