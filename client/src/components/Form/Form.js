@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import FileBase64 from "react-file-base64";
 
 import "./styles.css";
 import { createPost } from "../../Actions/Posts";
@@ -12,6 +13,7 @@ function Form() {
     tags: "",
     selectedFile: "",
   });
+
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,13 +55,13 @@ function Form() {
       </div>
       <div className="form-control">
         <label htmlFor="message">Message:</label>
-        <textarea
+        <input
           name="message"
           value={postData.message}
           onChange={(e) => {
             setPostData({ ...postData, message: e.target.value });
           }}
-        ></textarea>
+        />
       </div>
       <div className="form-control">
         <label htmlFor="tags">Tags:</label>
@@ -73,12 +75,18 @@ function Form() {
         />
       </div>
       <div className="form-control">
-        <input
+        {/* <input
           type="file"
           name="selectedFile"
           value={postData.selectedFile}
           onChange={(e) => {
             setPostData({ ...postData, selectedFile: e.target.value });
+          }}
+        /> */}
+        <FileBase64
+          multiple={false}
+          onDone={({ base64 }) => {
+            setPostData({ ...postData, selectedFile: base64 });
           }}
         />
       </div>

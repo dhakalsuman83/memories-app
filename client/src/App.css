@@ -1,3 +1,8 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
 .app-body {
   padding-right: 50px;
   display: flex;
