@@ -1,3 +1,37 @@
-.card-items {
-  width: 30%;
+.card-item {
+  box-shadow: 10px 10px 10px #888888;
+  border: 2px solid rgb(203, 203, 203);
+  border-radius: 20px;
+  width: 29%;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.card-item-overlay {
+  height: 95%;
+  width: 95%;
+  border-radius: 15px 15px 0 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgb(195, 193, 193);
+  position: absolute;
+  top: 5px;
+  left: 8px;
+}
+.card-item-overlay h3 {
+  margin: 0;
+}
+.card-item-overlay p {
+  margin-top: -1px;
+}
+
+.card-item-description {
+  padding: 10px;
+}
+.overlay-container {
+  position: relative;
+}
+
+.card-item img {
+  width: 101%;
+  border-radius: 15px 15px 0 0;
 }

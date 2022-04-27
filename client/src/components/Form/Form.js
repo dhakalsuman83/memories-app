@@ -94,7 +94,7 @@ function Form() {
         <button type="submit">Submit</button>
       </div>
       <div className="form-control">
-        <button onClick={clearForm}>clear</button>
+        <a onClick={clearForm}>clear</a>
       </div>
     </form>
   );
