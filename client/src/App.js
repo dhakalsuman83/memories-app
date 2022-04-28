@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { getPosts } from "./Actions/Posts";
@@ -8,6 +8,7 @@ import Form from "./components/Form/Form";
 import "./App.css";
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPosts());
@@ -17,8 +18,8 @@ const App = () => {
     <div className="container">
       <Header />
       <div className="app-body">
-        <Posts />
-        <Form />
+        <Posts setCurrentId={setCurrentId} />
+        <Form currentId={currentId} setCurrentId={setCurrentId} />
       </div>
     </div>
   );

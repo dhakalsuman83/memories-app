@@ -1,11 +1,11 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import FileBase64 from "react-file-base64";
 
 import "./styles.css";
-import { createPost } from "../../Actions/Posts";
+import { createPost, updatePost } from "../../Actions/Posts";
 
-function Form() {
+function Form({ currentId, setCurrentId }) {
   const [postData, setPostData] = React.useState({
     creator: "",
     title: "",
@@ -13,11 +13,23 @@ function Form() {
     tags: "",
     selectedFile: "",
   });
-
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((p) => p._id === currentId) : null
+  );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(postData));
+    if (currentId) {
+      dispatch(updatePost(currentId, postData));
+    } else {
+      dispatch(createPost(postData));
+    }
+    clearForm();
   };
   const clearForm = (e) => {
     setPostData({
@@ -27,10 +39,11 @@ function Form() {
       tags: "",
       selectedFile: "",
     });
+    setCurrentId(null);
   };
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <h3>Creating a memory</h3>
+      <h3>{currentId ? "Editing" : "Creating"} a memory</h3>
       <div className="form-control">
         <label htmlFor="creator">Creator:</label>
         <input
@@ -94,7 +107,9 @@ function Form() {
         <button type="submit">Submit</button>
       </div>
       <div className="form-control">
-        <a onClick={clearForm}>clear</a>
+        <a href="#" onClick={clearForm}>
+          clear
+        </a>
       </div>
     </form>
   );
