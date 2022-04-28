@@ -1,4 +1,7 @@
 .card-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 10px 10px 10px #888888;
   border: 2px solid rgb(203, 203, 203);
   border-radius: 20px;
@@ -20,11 +23,10 @@
 }
 
 .card-item-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
-}
-
-.card-item-description > p {
-  color: rgb(92, 92, 92);
 }
 
 .overlay-container {
@@ -48,12 +50,13 @@
   font-size: 24px;
 }
 .like-btn {
+  padding-top: 5px;
   margin-left: 5px;
 }
 
 .card-buttom {
   color: black;
-  padding: 5px;
+  padding: 10px 5px;
   margin-top: 8px;
   display: flex;
   align-items: center;
@@ -61,7 +64,13 @@
 }
 
 .card-buttom a {
+  display: flex;
   font-size: 20px;
   color: black;
   text-decoration: none;
+}
+
+.like-container {
+  display: flex;
+  align-items: center;
 }

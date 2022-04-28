@@ -110,8 +110,8 @@ function Form({ currentId, setCurrentId }) {
         <button type="submit">Submit</button>
       </div>
       <div className="form-control">
-        <a href="#" onClick={clearForm}>
-          clear
+        <a href="#" onClick={clearForm} className="clear-btn">
+          Clear form
         </a>
       </div>
     </form>

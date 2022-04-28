@@ -20,26 +20,37 @@ function Post({ post, setCurrentId }) {
         <FaBars className="fa-bars" onClick={() => setCurrentId(post._id)} />
       </div>
       <div className="card-item-description">
-        <p style={{ marginBottom: "8px", color: "rgb(92,92,92)" }}>
+        <p
+          style={{
+            marginBottom: "8px",
+            color: "rgb(92,92,92)",
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
           {post.tags.map((tag) => {
             return `#${tag}`;
           })}
         </p>
         <h4 style={{ marginBottom: "8px" }}>{post.title}</h4>
         <p style={{ color: "rgb(92,92,92)" }}>{post.message}</p>
-        <div className="card-buttom">
-          <a href="#">
-            {post.likeCount != 0 && post.likeCount}
-            <AiFillLike
-              className="like-btn"
-              onClick={() => dispatch(likePost(post._id))}
-            />
-          </a>
-          <AiOutlineDelete
-            className="delete-btn"
-            onClick={() => dispatch(deletePost(post._id))}
-          />
-        </div>
+      </div>
+      <div className="card-buttom">
+        <a href="#" onClick={() => dispatch(likePost(post._id))}>
+          <AiFillLike className="like-btn" />
+          {post.likeCount != 0 && (
+            <div className="like-container">
+              <p style={{ padding: "5px", fontSize: "18px" }}>
+                {post.likeCount === 1 ? "Like" : "Likes"}
+              </p>
+              <p style={{ fontSize: "18px" }}>{post.likeCount}</p>
+            </div>
+          )}
+        </a>
+        <AiOutlineDelete
+          className="delete-btn"
+          onClick={() => dispatch(deletePost(post._id))}
+        />
       </div>
     </div>
   );
