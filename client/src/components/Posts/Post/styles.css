@@ -22,6 +22,11 @@
 .card-item-description {
   padding: 10px;
 }
+
+.card-item-description > p {
+  color: rgb(92, 92, 92);
+}
+
 .overlay-container {
   position: relative;
 }

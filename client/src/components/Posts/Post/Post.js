@@ -20,9 +20,13 @@ function Post({ post, setCurrentId }) {
         <FaBars className="fa-bars" onClick={() => setCurrentId(post._id)} />
       </div>
       <div className="card-item-description">
-        <p>{post.tags[0]}</p>
-        <h4>{post.title}</h4>
-        <p>{post.message}</p>
+        <p style={{ marginBottom: "8px", color: "rgb(92,92,92)" }}>
+          {post.tags.map((tag) => {
+            return `#${tag}`;
+          })}
+        </p>
+        <h4 style={{ marginBottom: "8px" }}>{post.title}</h4>
+        <p style={{ color: "rgb(92,92,92)" }}>{post.message}</p>
         <div className="card-buttom">
           <a href="#">
             {post.likeCount != 0 && post.likeCount}

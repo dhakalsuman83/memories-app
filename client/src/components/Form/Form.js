@@ -83,7 +83,10 @@ function Form({ currentId, setCurrentId }) {
           name="tags"
           value={postData.tags}
           onChange={(e) => {
-            setPostData({ ...postData, tags: e.target.value });
+            setPostData({
+              ...postData,
+              tags: e.target.value.split(","),
+            });
           }}
         />
       </div>
