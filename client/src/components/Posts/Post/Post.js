@@ -1,11 +1,11 @@
 import React from "react";
 import moment from "moment";
 import { FaBars } from "react-icons/fa";
-import { AiOutlineDelete, AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 
 import "./styles.css";
-import { deletePost } from "../../../Actions/Posts";
+import { deletePost, likePost } from "../../../Actions/Posts";
 
 function Post({ post, setCurrentId }) {
   const dispatch = useDispatch();
@@ -26,7 +26,10 @@ function Post({ post, setCurrentId }) {
         <div className="card-buttom">
           <a href="#">
             {post.likeCount != 0 && post.likeCount}
-            <AiOutlineLike className="like-btn" />
+            <AiFillLike
+              className="like-btn"
+              onClick={() => dispatch(likePost(post._id))}
+            />
           </a>
           <AiOutlineDelete
             className="delete-btn"
