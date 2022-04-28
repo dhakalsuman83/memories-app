@@ -2,10 +2,13 @@ import React from "react";
 import moment from "moment";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineDelete, AiOutlineLike } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 
 import "./styles.css";
+import { deletePost } from "../../../Actions/Posts";
 
 function Post({ post, setCurrentId }) {
+  const dispatch = useDispatch();
   return (
     <div className="card-item">
       <div className="overlay-container">
@@ -25,7 +28,10 @@ function Post({ post, setCurrentId }) {
             {post.likeCount != 0 && post.likeCount}
             <AiOutlineLike className="like-btn" />
           </a>
-          <AiOutlineDelete className="delete-btn" />
+          <AiOutlineDelete
+            className="delete-btn"
+            onClick={() => dispatch(deletePost(post._id))}
+          />
         </div>
       </div>
     </div>
