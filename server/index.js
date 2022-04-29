@@ -11,6 +11,9 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use("/posts", postRoutes);
+app.use("/", (req, res) => {
+  res.json({ msg: "The route is not valid" });
+});
 
 const CONNECTION_URL =
   "mongodb+srv://dhakalsuman:suman12345@cluster0.rnu3p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
